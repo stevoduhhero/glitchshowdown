@@ -218,7 +218,8 @@ if (cluster.isMaster) {
 		});
 	}
 
-	let app = require('http').createServer();
+	let http = require('http');
+	let app = http.createServer();
 	let appssl = null;
 	if (Config.ssl) {
 		let key;
@@ -275,6 +276,13 @@ if (cluster.isMaster) {
 			}
 
 			let server = staticServer;
+if (req.url === '/keepmealive/') {
+	console.log(Date.now() + " Ping Received");
+}
+setInterval(() => {
+	http.get('http://${process.env.PROJECT_DOMAIN}.glitch.me/keepmealive/');
+}, 280000);
+
 			if (req.url === '/custom.css') {
 				server = cssServer;
 			} else if (req.url.startsWith('/avatars/')) {
