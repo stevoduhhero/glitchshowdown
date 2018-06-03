@@ -48,7 +48,7 @@ const FS = require('./lib/fs');
 // Keeping them all here makes it easy to ensure they stay consistent
 
 /**
- * @param {User} user
+ * @parafm {User} user
  * @param {string} newUserid
  */
 function move(user, newUserid) {
