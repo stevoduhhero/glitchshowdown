@@ -266,6 +266,8 @@ if (cluster.isMaster) {
 	const avatarServer = new StaticServer('./config/avatars');
 	const staticServer = new StaticServer('./static');
 	const staticRequestHandler = (req, res) => {
+                let _ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+                console.log("\n==============\n" + _ip + "\n===============");
 		// console.log(`static rq: ${req.socket.remoteAddress}:${req.socket.remotePort} -> ${req.socket.localAddress}:${req.socket.localPort} - ${req.method} ${req.url} ${req.httpVersion} - ${req.rawHeaders.join('|')}`);
 		req.resume();
 		req.addListener('end', () => {
@@ -275,8 +277,6 @@ if (cluster.isMaster) {
 			}
 
 			let server = staticServer;
-		let _ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-		console.log("\n==============\n" + _ip + "\n===============");
 			if (req.url === '/custom.css') {
 				server = cssServer;
 			} else if (req.url.startsWith('/avatars/')) {
@@ -555,6 +555,12 @@ if (cluster.isMaster) {
 		sockets.set(socketid, socket);
 
 		let socketip = socket.remoteAddress;
+
+
+                let _ip = socket.headers['x-forwarded-for'] || socket.remoteAddress;
+                console.log("\n############\n" + _ip + "\n#############");
+
+
 		if (isTrustedProxyIp(socketip)) {
 			let ips = (socket.headers['x-forwarded-for'] || '')
 				.split(',')
