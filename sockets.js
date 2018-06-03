@@ -266,8 +266,6 @@ if (cluster.isMaster) {
 	const avatarServer = new StaticServer('./config/avatars');
 	const staticServer = new StaticServer('./static');
 	const staticRequestHandler = (req, res) => {
-                let _ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-                console.log("\n==============\n" + _ip + "\n===============");
 		// console.log(`static rq: ${req.socket.remoteAddress}:${req.socket.remotePort} -> ${req.socket.localAddress}:${req.socket.localPort} - ${req.method} ${req.url} ${req.httpVersion} - ${req.rawHeaders.join('|')}`);
 		req.resume();
 		req.addListener('end', () => {
@@ -550,15 +548,23 @@ if (cluster.isMaster) {
 		
 		
 		
-
+		//regular PS code
 		let socketid = '' + (++socketCounter);
 		sockets.set(socketid, socket);
-
 		let socketip = socket.remoteAddress;
 
 
-                let _ip = socket.headers['x-forwarded-for'] || socket.remoteAddress;
-                console.log("\n############\n" + _ip + "\n#############");
+
+
+		//hack for glitch server to read ips... otherwise they  are all 127.0.0.1 no bueno
+		let otherIps = socket.headers['x-forwarded-for'];
+		if (otherIps) {
+			otherIps = otherIps.split(',');
+			if (socketip === "127.0.0.1" || !socketip) socketip = otherIps[0];
+		}
+
+
+
 
 
 		if (isTrustedProxyIp(socketip)) {
