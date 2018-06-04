@@ -91,6 +91,8 @@ maps.mergeGuests = function(user) {
 	}
 };
 maps.setup = function(commands) {
+	Dex.data.Formats.psmmo = {name: "psmmo", mod: 'gen7', ruleset: ['Pokemon'], searchShow: false};
+	
 	//commands that are being replaced from chat-commands.js
 	maps.commands.join = (function(target, room, user, connection) {
 		var cached_function = commands.join;
@@ -127,7 +129,7 @@ maps.setup = function(commands) {
 	maps.commands.challenge = (function(target, room, user, connection) {
 		var cached_function = commands.challenge;
 		return function(target, room, user, connection) {
-			if (target.split('psmmo').length - 1 > 0) target = target.replace("psmmo", "gen7balancedhackmons"); //mmo
+			//if (target.split('psmmo').length - 1 > 0) target = target.replace("psmmo", "gen7balancedhackmons"); //mmo
 			var result = cached_function.apply(this, arguments);
 			return result;
 		};
