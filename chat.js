@@ -290,8 +290,17 @@ class CommandContext {
 
 		if (message && message !== true && typeof message.then !== 'function') {
 			if (this.pmTarget) {
+				const parsedMsg = parseEmoticons(message, this.room, this.user, true);
+				if (parsedMsg) message = '/html ' + parsedMsg;
+
+				let buf = `|pm|${this.user.getIdentity()}|${this.pmTarget.getIdentity()}|${message}`;
+				this.user.send(buf);
+				if (this.pmTarget !== this.user) this.pmTarget.send(buf);        
+        
+        
 				Chat.sendPM(message, this.user, this.pmTarget);
 			} else {
+				if (parseEmoticons(message, this.room, this.user)) return;
 				this.room.add(`|c|${this.user.getIdentity(this.room.id)}|${message}`);
 			}
 		}
