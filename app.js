@@ -119,7 +119,7 @@ global.Dnsbl = require('./dnsbl');
 Dnsbl.loadDatacenters();
 
 global.Tells = require('./tells');
-global.Db = require('nef')(require('net-fs')('config/db'));
+global.Db = require('nef')(require('./neffs')('config/db'));
 
 if (Config.crashguard) {
 	// graceful crash - allow current battles to finish before restarting
