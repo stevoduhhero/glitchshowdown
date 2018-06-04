@@ -118,6 +118,9 @@ global.Tournaments = require('./tournaments');
 global.Dnsbl = require('./dnsbl');
 Dnsbl.loadDatacenters();
 
+global.Tells = require('./tells');
+global.Db = require('nef')(require('net-fs')('config/db'));
+
 if (Config.crashguard) {
 	// graceful crash - allow current battles to finish before restarting
 	process.on('uncaughtException', err => {
