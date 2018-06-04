@@ -61,7 +61,7 @@ exports.commands = {
 		if (user.can('lock', null, room)) this.add("|raw|-- <font color='" + color(user.userid) + "'><strong>" + Chat.escapeHTML(user.name) + "</strong></font> is now " + target.toLowerCase() + ".");
 		//user.forceRename(newName, user.registered);
 		user.oldGroup = user.group;
-		user.group = "&bull;";
+		user.group = "\u2022";
 		user.updateIdentity();
 		user.isAway = true;
 	},
