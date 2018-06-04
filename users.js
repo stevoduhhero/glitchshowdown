@@ -1172,6 +1172,7 @@ class User {
 	 * @param {Connection} connection
 	 */
 	onDisconnect(connection) {
+		if (this.named) Db.seen.set(this.userid, Date.now());
 		for (const [i, connected] of this.connections.entries()) {
 			if (connected === connection) {
 				// console.log('DISCONNECT: ' + this.userid);
