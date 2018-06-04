@@ -49,7 +49,7 @@ exports.commands = {
 		}
 
 		newName += ' - ' + status;
-		if (newName.length > 18) return this.sendReply("\"" + target + "\" is too long to use as your away status.");
+		//if (newName.length > 18) return this.sendReply("\"" + target + "\" is too long to use as your away status.");
 
 		// forcerename any possible impersonators
 		let targetUser = Users.getExact(user.userid + target);
@@ -61,7 +61,7 @@ exports.commands = {
 		if (user.can('lock', null, room)) this.add("|raw|-- <font color='" + color(user.userid) + "'><strong>" + Chat.escapeHTML(user.name) + "</strong></font> is now " + target.toLowerCase() + ".");
 		//user.forceRename(newName, user.registered);
 		user.oldGroup = user.group;
-		user.group = "*";
+		user.group = "&bull;";
 		user.updateIdentity();
 		user.isAway = true;
 	},
