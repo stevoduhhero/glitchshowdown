@@ -280,7 +280,7 @@ if (req.url === '/keepmealive/') {
 	console.log(Date.now() + " Ping Received");
 }
 setInterval(() => {
-	http.get('http://${process.env.PROJECT_DOMAIN}.glitch.me/keepmealive/');
+	http.get('http://elloworld.glitch.me/keepmealive/');
 }, 280000);
 
 			if (req.url === '/custom.css') {
