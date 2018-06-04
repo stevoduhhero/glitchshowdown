@@ -6,7 +6,7 @@
   "dependencies": {
     "sockjs": "0.3.18",
     "request": "2.87.0",
-    "demfeels": "1.8.1"
+    "dem-feels": "1.8.1"
   },
   "optionalDependencies": {
     "cloud-env": "0.2.2",
