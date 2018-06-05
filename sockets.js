@@ -276,12 +276,15 @@ if (cluster.isMaster) {
 			}
 
 			let server = staticServer;
+
 if (req.url === '/keepmealive/') {
 	console.log(Date.now() + " Ping Received");
 }
-setInterval(() => {
+if (typeof myInterval === 'undefined') {
+global.myInterval = setInterval(() => {
 	http.get('http://elloworld.glitch.me/keepmealive/');
 }, 280000);
+}
 
 			if (req.url === '/custom.css') {
 				server = cssServer;
