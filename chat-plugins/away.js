@@ -59,7 +59,7 @@ exports.commands = {
 		}
 
 		if (user.can('lock', null, room)) this.add("|raw|-- <font color='" + color(user.userid) + "'><strong>" + Chat.escapeHTML(user.name) + "</strong></font> is now " + target.toLowerCase() + ".");
-		//user.forceRename(newName, user.registered);
+		user.forceRename(newName, user.registered);
 		user.oldGroup = user.group;
 		user.group = "\u2022";
 		user.updateIdentity();
@@ -82,7 +82,7 @@ exports.commands = {
 
 		let status = parseStatus(newName.substr(statusIdx + 3), false);
 		newName = newName.substr(0, statusIdx);
-		//user.forceRename(newName, user.registered);
+		user.forceRename(newName, user.registered);
 		user.group = user.oldGroup;
 		user.updateIdentity();
 		user.isAway = false;
@@ -139,6 +139,6 @@ exports.commands = {
 
 	mimis: function (target, room, user) {
 		this.parse('/away MIMIS');
-	},
+	},C
 };
 
