@@ -139,6 +139,6 @@ exports.commands = {
 
 	mimis: function (target, room, user) {
 		this.parse('/away MIMIS');
-	},C
+	},
 };
 

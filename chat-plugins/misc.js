@@ -229,6 +229,8 @@ exports.commands = {
 	seenhelp: ["/seen - Shows when the user last connected on the server."],
 
 	tell: function (target, room, user, connection) {
+      Config.tellsexpiryage = 1000 * 60 * 60 * 24 * 7;
+      Config.tellrank = ' ';
 		if (!target) return this.parse('/help tell');
 		target = this.splitTarget(target);
 		let targetUser = this.targetUser;
