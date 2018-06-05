@@ -158,14 +158,28 @@ class Roomlog {
 	 * @param {string} message
 	 */
 	add(message) {
-		if (message.startsWith('|uhtmlchange|')) return this.uhtmlchange(message);
-		this.roomlog(message);
+			//og code
+			if (message.startsWith('|uhtmlchange|')) return this.uhtmlchange(message);
+			this.roomlog(message);
+
 		if (this.logTimes && message.startsWith('|c|')) {
-			message = '|c:|' + (~~(Date.now() / 1000)) + '|' + message.substr(3);
+			if (nightclubs[this.id]) {
+				message = nightclubify(message.substr(3));
+			} else {
+				message = '|c:|' + (~~(Date.now() / 1000)) + '|' + message.substr(3);
+			}
+		} else if (nightclubs[this.id]) {
+			let style = '|raw|<div style = "color: white; text-shadow: 0px 0px 6px, 0px 0px 6px; background: black; padding: 2px; margin: -3px,">';
+			if (message.match(/^\|html\||^\|raw\|/m) && !message.match(/\|\~\|/m)) {
+				message = style + message.replace(/^\|html\||^\|raw\|/m, '') + '</div>';
+			} else if (!message.match(/^\|[a-z]+\|/) && !message.match(/^\|\|/)) {
+				message = style + message + '</div>';
+			}
 		}
-		this.log.push(message);
-		this.broadcastBuffer += message + '\n';
-		return this;
+			//og code
+			this.log.push(message);
+			this.broadcastBuffer += message + '\n';
+			return this;
 	}
 	/**
 	 * @param {string} username
