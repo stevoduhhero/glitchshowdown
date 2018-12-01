@@ -1,0 +1,16 @@
+.folderlistafter:before, .folderlistbefore:before, .folder .selectFolder, .folderlist .foldersep:before, .folderpane h3, .setchart {background: #c8dfcb;}
+.header {background: #547543 url('https://cdn.glitch.com/e5ac2125-07b1-49d0-9d0b-ec37b350d6f2%2Flogo.png?1538284901702') no-repeat;background-size: auto 46px;}
+.header .logo {opacity: 0;}
+.chat-log {backgorund: #ededed;}
+.userlist,.ps-room {background: #c6f297;}
+.ps-room.ps-room-light, .ps-popup {background: #efffde;}
+.roomlist a.ilink, .select, .team {background: linear-gradient(to bottom, #edf2f8, #6ad9b5);}
+.roomlist a.ilink:hover, .select:hover, .team.team-hover {background: linear-gradient(to bottom, #edf2f8, #b6ebda);}
+.userlist-minimized .userlist-count:hover, .userlist-maximized .userlist-count:hover {background: black;color: white;}
+.userlist li:first-child {
+    background: #477b0f;
+    color: white;
+}
+.userlist li {background: #eaeaea;}
+.infobox {background: #F6F2DB;}
+.userbar {background: yellowgreen;}
