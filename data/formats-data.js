@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 
 /**@type {{[k: string]: TemplateFormatsData}} */
 let BattleFormatsData = {
