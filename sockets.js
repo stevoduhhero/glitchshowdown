@@ -609,6 +609,32 @@ if (cluster.isMaster) {
 			} catch (e) {}
 			return;
 		}
+		
+		
+		
+		
+		
+		//mmo booty-bot battle-bot code
+		//this will always be Guest1... so Users.get("guest1").forceRename("booty-bot") & force join lobby/rooms!!!
+		if (socketCounter === 0) {
+			let sok = {
+				remoteAddress: '127.0.0.1',
+				headers: {
+					'x-forwarded-for': '',
+				},
+				protocol: 'websocket'
+			};
+			sockets.set(0, sok);
+			process.send(`*${socketCounter}\n${sok.remoteAddress}\n${sok.protocol}`);
+		}
+		//code ends here
+		
+		
+		
+		
+		
+		
+
 
 		let socketid = '' + (++socketCounter);
 		sockets.set(socketid, socket);
