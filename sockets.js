@@ -639,11 +639,7 @@ if (cluster.isMaster) {
 		let socketid = '' + (++socketCounter);
 		sockets.set(socketid, socket);
 
-<<<<<<< HEAD
-    let socketip = (socket.headers['x-forwarded-for'] || '').split(',')[0];
-=======
 		let socketip = (socket.headers['x-forwarded-for'] || '').split(',')[0];
->>>>>>> 3ec398016534aa0c98d2bc0f6e69460a741712a9
 		if (isTrustedProxyIp(socketip)) {
 			let ips = (socket.headers['x-forwarded-for'] || '')
 				.split(',')
