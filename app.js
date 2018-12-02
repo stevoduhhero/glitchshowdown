@@ -168,3 +168,7 @@ setInterval(() => {
   console.log('try ping');
   http.get(`http://psmmo.glitch.me/`);
 }, 280000);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3ec398016534aa0c98d2bc0f6e69460a741712a9
