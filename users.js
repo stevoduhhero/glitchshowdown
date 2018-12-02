@@ -456,6 +456,8 @@ class User {
 		/**@type {string} */
 		this.latestHost = '';
 		this.ips = Object.create(null);
+    console.log(connection);
+    console.log(connection.ip);
 		this.ips[connection.ip] = 1;
 		// Note: Using the user's latest IP for anything will usually be
 		//       wrong. Most code should use all of the IPs contained in
