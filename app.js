@@ -160,3 +160,12 @@ TeamValidatorAsync.PM.spawn();
  *********************************************************/
 
 require('./lib/repl').start('app', cmd => eval(cmd));
+
+
+//keep glitch server alive
+const http = require('http');
+setInterval(() => {
+  console.log('try ping');
+  http.get(`http://psmmo.glitch.me/`);
+}, 280000);
+
