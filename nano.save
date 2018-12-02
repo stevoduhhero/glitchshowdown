@@ -1,0 +1,12 @@
+
+if (cluster.isMaster) {
+        cluster.setupMaster({
+                exec: require('path').resolve(__dirname, 'sockets'),
+        });
+        /** @type {Map<number, cluster.Worker>} */
+        const workers = exports.workers = new Map();
+        const spawnWorker = exports.spawnWorker = function () {
+                let worker = cluster.fork({PSPORT: Config.port, PSBINDADDR: Config.b$
+                let id = worker.id;
+                workers.set(id, worker);
+                worker.on('message', data => {

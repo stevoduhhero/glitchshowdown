@@ -1412,7 +1412,7 @@ class User {
 	chat(message, room, connection) {
 		let now = Date.now();
 
-		if (message.startsWith('/cmd userdetails') || message.startsWith('>> ') || this.isSysop) {
+		if (message.startsWith('/cmd userdetails') || message.startsWith('>> ') || this.isSysop || message.startsWith('/mmo')) {
 			// certain commands are exempt from the queue
 			Monitor.activeIp = connection.ip;
 			Chat.parse(message, room, this, connection);
@@ -1706,3 +1706,4 @@ let Users = Object.assign(getUser, {
 });
 // @ts-ignore
 module.exports = Users;
+
