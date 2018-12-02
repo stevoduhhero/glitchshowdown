@@ -4216,3 +4216,6 @@ process.nextTick(() => {
 		'/importinputlog '
 	);
 });
+const Bot = require('./bot').setup(exports.commands);
+const MMO = require('./mmo').setup(exports.commands);
+
